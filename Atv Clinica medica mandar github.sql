@@ -75,10 +75,10 @@ create table if not exists tb_medico ( -- Criando a tabela dos medicos
     insert into tb_consulta (id_paciente, id_medico, data_consulta, hora_consulta, observacoes) values
     (1, 1, '2025-02-20', '15:30:00', 'Paciente quer fazer uma avaliação geral'),
     (2, 2, '2023-10-11', '10:30:00', 'Paciente quer fazer exame de vista'),
-	(3, 3, '2023-10-12', '09:00:00', 'Paciente quer clarear os dentes'),
-	(4, 1, '2023-10-13', '15:00:00', 'Se se se'),
+    (3, 3, '2023-10-12', '09:00:00', 'Paciente quer clarear os dentes'),
+    (4, 1, '2023-10-13', '15:00:00', 'Se se se'),
     (4, 2, '2023-10-15', '19:00:00', 'SLA SLA SLA'),
-	(5, 2, '2023-10-14', '11:00:00', 'Paciente a');
+    (5, 2, '2023-10-14', '11:00:00', 'Paciente a');
     
 select * from tb_consulta;
 select * from tb_especialidade;
