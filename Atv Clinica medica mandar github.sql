@@ -7,7 +7,7 @@ USE db_clinicaMedica; -- acho que talvez seria melhor eu criar uma tabela separa
 
 /*EXERCICIO 2*/
 CREATE TABLE IF NOT EXISTS tb_paciente ( -- Criando a tabela de paciente
-	id_paciente INT NOT NULL AUTO_INCREMENT,
+    id_paciente INT NOT NULL AUTO_INCREMENT,
     nome_paciente VARCHAR(255),
     cpf_paciente char(11) unique, -- somente numeros do cpf
     dt_nascimento_paciente date,
@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS tb_paciente ( -- Criando a tabela de paciente
 
 
 create table if not exists tb_medico ( -- Criando a tabela dos medicos
-	id_medico int not null auto_increment,
+    id_medico int not null auto_increment,
     nome_medico varchar(255),
     crm_medico varchar(15) unique, -- exemplo de CRM (123456/SP)
     id_especialidade int,
@@ -37,7 +37,7 @@ create table if not exists tb_medico ( -- Criando a tabela dos medicos
     );
     
     create table if not exists tb_consulta ( -- Crindo a tabela de consultas
-		id_consulta int not null auto_increment,
+	id_consulta int not null auto_increment,
         id_paciente int,
         id_medico int,
         data_consulta date,
@@ -63,14 +63,14 @@ create table if not exists tb_medico ( -- Criando a tabela dos medicos
     insert into tb_paciente (nome_paciente, cpf_paciente, dt_nascimento_paciente, telefone_paciente, endereco_paciente) values
     ('Danton Meireles', '12345678900', '1111-11-11', '13912345696', 'Minha casa, numero tal, ap tal'),
     ('Carlos Pereira', '98765432100', '1985-10-20', '11988887777', 'Rua B, 456'),
-	('Fernanda Lima', '11122233344', '2000-02-10', '11977776666', 'Rua C, 789'),
-	('Ricardo Alves', '55566677788', '1975-12-25', '11966665555', 'Rua D, 101'),
-	('Juliana Costa', '99988877766', '1995-07-30', '11955554444', 'Rua E, 202');
+    ('Fernanda Lima', '11122233344', '2000-02-10', '11977776666', 'Rua C, 789'),
+    ('Ricardo Alves', '55566677788', '1975-12-25', '11966665555', 'Rua D, 101'),
+    ('Juliana Costa', '99988877766', '1995-07-30', '11955554444', 'Rua E, 202');
     
     insert into tb_medico (nome_medico, crm_medico, id_especialidade, telefone_medico) values
     ('Dr. Paulo Muzy', 'CRM12345/SP', 3, '11987654321'),
-	('Dra. Deide da Silva', 'CRM54321/MG', 2, '11912345678'),
-	('Dr. Pericles', 'CRM67890/PA', 1, '11955554444');
+    ('Dra. Deide da Silva', 'CRM54321/MG', 2, '11912345678'),
+    ('Dr. Pericles', 'CRM67890/PA', 1, '11955554444');
     
     insert into tb_consulta (id_paciente, id_medico, data_consulta, hora_consulta, observacoes) values
     (1, 1, '2025-02-20', '15:30:00', 'Paciente quer fazer uma avaliação geral'),
@@ -108,7 +108,7 @@ select c.data_consulta, c.hora_consulta, c.observacoes, -- Selecionei data, hora
 		join tb_medico m on c.id_medico = m.id_medico -- Relacionei a consulta com a tabela médico, onde o id_medico na consulta deve ser igual ao id_medico na tabela tb_medico
 			join tb_especialidade e on m.id_especialidade = e.id_especialidade -- Relacionei a tabela médico com a tabela especialidade, conectando pela coluna id_especialidade
 				where c.id_paciente = ( -- Filtro para selecionar apenas consultas de um paciente específico
-                select id_paciente from tb_paciente where nome_paciente = 'Danton Meireles'); -- Subconsulta para buscar o id_paciente de quem tem o nome 'Danton Meireles'
+                		select id_paciente from tb_paciente where nome_paciente = 'Danton Meireles'); -- Subconsulta para buscar o id_paciente de quem tem o nome 'Danton Meireles'
  
  -- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
  
